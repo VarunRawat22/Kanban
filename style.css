@@ -1,0 +1,187 @@
+/* boiler plate of CSS*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body{
+    height: 100%;
+    width: 100%;
+}
+
+/* boilerplate finished */
+
+:root{
+    --bg-color: black;
+    --bg-button-color: #1a1a1a;
+    --bg-task-color: #2a2a2a;
+    --primary-text-color:white;
+    --delete-color: #ff4d4d;
+
+    /* padding variables*/
+    --nav-padding: 15px 30px;
+    --section-padding: 15px 30px;
+    --padding-s:5px;
+    --padding-m:10px;
+    --padding-l:15px;   
+    --padding-xl:20px;
+    --padding-xxl:30px;
+
+    /* border-radius variables*/
+    --border-radius-s:5px;
+    --border-radius-m:10px; 
+    --border-radius-l:15px;
+    --border-radius-xl:20px;
+    --border-radius-xxl:30px;
+
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+}
+
+main{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--nav-padding);
+    position: sticky;
+    top:0;
+    background-color: var(--bg-color);
+}
+
+nav button{
+    background-color: var(--bg-button-color);
+    color: var(--primary-text-color);
+    padding: var(--padding-m) var(--padding-l);
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius-m);
+    cursor: pointer;
+}
+
+section{
+    padding: var(--section-padding);
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: var(--border-radius-xxl);
+}
+
+section .task-column{
+    background-color: var(--bg-button-color);
+    flex-grow: 1;
+    width: 100%;
+    border-radius: var(--border-radius-m);
+    padding: var(--padding-m);
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.hover-over{
+    border: 2px dashed var(--primary-text-color);
+    scale:1.05;
+}
+
+section .task-column .heading{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section .task-column .task{
+    background-color: var(--bg-task-color);
+    margin-top: var(--padding-m);
+    padding: var(--padding-m);
+    border-radius: var(--border-radius-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-s);
+    cursor: grab;
+}
+
+section .task-column .task button{
+    align-self: flex-end;
+    cursor: pointer;
+    padding: var(--padding-s) var(--padding-m);
+    border: none;
+    outline:none;
+    background-color: var(--delete-color);
+    color: var(--primary-text-color);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(7px);
+    background-color: rgba(0,0,0,0.3);
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.modal .center {
+    background-color: var(--bg-button-color);
+    padding: var(--padding-xxl);
+    border-radius: var(--border-radius-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-l);
+    min-width: 300px;
+    position: relative;    /* Agar position hi nahi diya → z-index kaam nahi karega.*/
+    z-index: 2;  /* z-index decide karta hai ki kaunsa element upar dikhega aur kaunsa neeche. jiska z> wo upper dikhega*/
+    
+
+    backdrop-filter: none; /* 👍 content blur nahi hoga */
+}
+
+
+.modal .center input,
+.modal .center textarea{
+    background-color: var(--bg-task-color);
+    border: none;
+    outline: none;
+    color: var(--primary-text-color);
+    padding: var(--padding-m);
+    border-radius: var(--border-radius-s);
+    /* resize: none; */
+}
+
+.modal .center button{
+    background-color: var(--bg-task-color);
+    color: var(--primary-text-color);
+    padding: var(--padding-m) var(--padding-l);
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius-m);
+    cursor: pointer;
+    align-self: center;
+    width: fit-content;
+}
